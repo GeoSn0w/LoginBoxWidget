@@ -12,8 +12,8 @@ The idea is simple, the plugin adds a widget to the sidebar that can work in two
 
 | Tested On     | PHP Version           | Wordpress Version  |  Status           |
 | ------------- |:---------------------:| ------------------:| -----------------:|
-| localhost     | 7.2.8                 | 4.9.8              |  ![alt text](https://user-images.githubusercontent.com/15067741/44679269-6e467c80-aa32-11e8-8651-7838e3609a52.png "PASSED")           |
-| Online server | 7.2.8                 | 4.9.8              |  ![alt text](https://user-images.githubusercontent.com/15067741/44679269-6e467c80-aa32-11e8-8651-7838e3609a52.png "PASSED")           |
+| localhost     | 7.2.8                 | 5.1              |  ![alt text](https://user-images.githubusercontent.com/15067741/44679269-6e467c80-aa32-11e8-8651-7838e3609a52.png "PASSED")           |
+| Online server | 7.2.8                 | 5.1              |  ![alt text](https://user-images.githubusercontent.com/15067741/44679269-6e467c80-aa32-11e8-8651-7838e3609a52.png "PASSED")           |
 
 ### Contact me
 <ul>
