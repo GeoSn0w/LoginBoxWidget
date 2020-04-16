@@ -1,6 +1,8 @@
 # LoginBoxWidget
 A Wordpress Conditional Login Box Widget for the Sidebar
 
+# NOT MAINTAINED ANYMORE! Use at your own risk.
+
 The idea is simple, the plugin adds a widget to the sidebar that can work in two modes. If the user is authenticated it shows "Hello <username>" and a button that goes to the user profile settings page, and if the user is not authenticated it will show a button called "Authenticate" that will show the login form if pressed.
   
 ### Screenshots
