@@ -2,7 +2,7 @@
 /*
 Plugin Name: LoginBox Widget
 Description: This plugin adds a widget with a login button that once pressed, shows a login form in the widget area for the guests. The authenticated users do not see the form.
-Version: 1.0
+Version: 1.1
 Author: GeoSn0w (@FCE365)
 Author URI: https://twitter.com/FCE365
 License: GPL2
@@ -33,7 +33,7 @@ class geosn0w_LoginBoxWidget extends WP_Widget
 			global $current_user;
 			get_currentuserinfo();
 			// Probably not the best way to do this but this is literally my first ever Wordpress Widget / Plugin so feel free to point to my horrible mistakes :P
-			echo '<center> Hello, ' . $current_user->user_login . '</center>';
+			echo '<center> Hello, ' .htmlspecialchars($current_user->user_login) . '</center>';
 			echo '<style> .extra button { margin: 0; padding: 0; border: inherit; background: #3093de; color: #fff; text-decoration: none; font-size: 17px; font-size: 1.0625rem; transition: all 0.2s ease; width: 100%; min-height: 49px; } </style> <div class ="extra" align="center"> <button onclick="getToChannel()"><i class="fa fa-user"></i> Your Profile</button> </div> <script> function getToChannel() { window.location.href = "/wp-admin/profile.php"; } </script>';
 		}
 		else {
