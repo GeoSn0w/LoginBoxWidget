@@ -2,12 +2,16 @@
 /*
 Plugin Name: LoginBox Widget
 Description: This plugin adds a widget with a login button that once pressed, shows a login form in the widget area for the guests. The authenticated users do not see the form.
-Version: 1.1
+Version: 1.2
 Author: GeoSn0w (@FCE365)
 Author URI: https://twitter.com/FCE365
 License: GPL2
 Text Domain: geosn0w_LoginBoxWidget_lbw
 */
+
+$ignoreUserStatus = false;
+$shouldAlert = false;
+
 add_action('plugins_loaded', 'geosn0w_load_textdomain');
 
 function geosn0w_load_textdomain()
@@ -29,12 +33,15 @@ class geosn0w_LoginBoxWidget extends WP_Widget
 		if (!empty($title)) echo $args['before_title'] . $title . $args['after_title'];
 		//Added in case some themes don't add it by default since the plugin uses FA icons.
 		echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">';
-		if (is_user_logged_in()) {
+		if (is_user_logged_in() && shouldAlert == false) {
 			global $current_user;
 			get_currentuserinfo();
 			// Probably not the best way to do this but this is literally my first ever Wordpress Widget / Plugin so feel free to point to my horrible mistakes :P
 			echo '<center> Hello, ' .htmlspecialchars($current_user->user_login) . '</center>';
 			echo '<style> .extra button { margin: 0; padding: 0; border: inherit; background: #3093de; color: #fff; text-decoration: none; font-size: 17px; font-size: 1.0625rem; transition: all 0.2s ease; width: 100%; min-height: 49px; } </style> <div class ="extra" align="center"> <button onclick="getToChannel()"><i class="fa fa-user"></i> Your Profile</button> </div> <script> function getToChannel() { window.location.href = "/wp-admin/profile.php"; } </script>';
+		}
+		else if (is_user_logged_in() && shouldAlert == true) {
+			alert_user_logged_in();
 		}
 		else {
 			echo '<style> .extra button { margin: 0; padding: 0; border: inherit; background: #3093de; color: #fff; text-decoration: none; font-size: 17px; font-size: 1.0625rem; transition: all 0.2s ease; width: 100%; min-height: 49px; } </style><div class="extra" id="loginButton"> <center> Have an account? </center> <button onclick="showForm()"><i class="fa fa-key"></i> Authenticate</button></div><div id="loginForm"><center>';
@@ -50,6 +57,13 @@ class geosn0w_LoginBoxWidget extends WP_Widget
 function lbw_geosn0w_regWid()
 {
 	register_widget('geosn0w_LoginBoxWidget');
+}
+
+function alert_user_logged_in(){
+	if (is_user_logged_in() && !ignoreUserStatus) {
+	  echo 'alert("User is already logged in! Please log out first. If you are not logged in, clear the cookies and try again!");'
+          exit();		  
+	}
 }
 
 add_action('widgets_init', 'lbw_geosn0w_regWid');
